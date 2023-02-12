@@ -9,7 +9,7 @@
 
 //write namespace using statement for cout
 
-using std: : count;
+using std: : cout;
 
 using std: : cin;
 /*
