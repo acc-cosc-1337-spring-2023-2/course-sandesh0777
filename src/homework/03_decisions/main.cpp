@@ -1,6 +1,5 @@
 //write include statements
 #include <iostream>
-#include "decisions.cpp"
 #include "decisions.h"
 using namespace std;
 
