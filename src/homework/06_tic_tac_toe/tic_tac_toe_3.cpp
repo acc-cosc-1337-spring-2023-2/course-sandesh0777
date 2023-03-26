@@ -1,32 +1,60 @@
+
+# include <iostream>
+# include <string>
 #include "tic_tac_toe_3.h"
 
-/*
-class function check_column_win
-Win by column if and return true if
-0,3, and 6 are equal
-1, 4, and 7
-2, 5, and 8
-else
-false
-*/
 
+bool TicTacToe::game_over()
+{
+    return check_board_full();
+}
 
+void TicTacToe::start_game(std::string first_player)
+{
+    player = first_player;
+    clear_board();
+}
 
-/*
-class function check_row_win
-Win by row if
-0, 1, 2 are equal
-3,4,5 are equal
-6,7,8 are equal
-*/
+void TicTacToe::mark_board(int position)
+{
+    pegs[position - 1] = player;
+    set_next_player();
+}
 
+std::string TicTacToe::get_player() const
+{
+    return player;
+}
 
+void TicTacToe::display_board() const
+{
+    for (int i = 0; i < 9; i += 3)
+    {
+        std::cout << pegs[i] << "|" << pegs[i + 1] << "|" << pegs[i + 2] << "\n";
+    }
+}
 
-/*
-class function check_diagonal_win
-Win diagonally
-0 1 2
-3 4 5
-6 7 8
+void TicTacToe::set_next_player()
+{
+    player = (player == "X") ? "O" : "X";
+}
 
-*/
+bool TicTacToe::check_board_full()
+{
+    for (auto peg : pegs)
+    {
+        if (peg == " ")
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+void TicTacToe::clear_board()
+{
+    for (auto &peg : pegs)
+    {
+        peg = " ";
+    }
+}
